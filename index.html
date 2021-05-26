@@ -10,16 +10,16 @@
 </head>
 <body>
     <!-- 캔버스 -->
-    <canvas class="canvas"></canvas>
+    <canvas class="canvas" id="jsCanvas" width="700" height="700"></canvas>
     
     <!-- 캔버스 컨트롤 -->
     <div class="controls">
         <div>
-            <input type="range" min="0.1" max="5" value="2.5" step="0.1">
+            <input id="jsRange" type="range" min="0.1" max="5" value="2.5" step="0.1">
         </div>
         <div class="controls-btns">
-            <button>fill</button>
-            <button>save</button>
+            <button id="fillMode">brush</button>
+            <button id="saveMode" class="save">save</button>
         </div>
         <div class="controls-colors">
             <div class="color" style="background-color: #fd79a8;"></div>
@@ -34,5 +34,6 @@
             <div class="color" style="background-color: rgb(12, 12, 12);"></div>
         </div>
     </div>
+    <script src="paint.js"></script>
 </body>
 </html>
