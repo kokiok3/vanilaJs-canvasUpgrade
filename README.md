@@ -2,7 +2,7 @@
 I am reviewing what I learned and adding new things to make my own. <br>
 You can see the orginal version at my 'vanilaJs-canvas' repository. <br>
 
-<h3> Here's the website <h3>
+<h3> Here's the website </h3>
  <a href= "https://kokiok3.github.io/vanilaJs-canvasUpgrade/" target= "_blank"> 
  vanilaJs-canvasUpgrade </a>
  
