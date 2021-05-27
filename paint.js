@@ -4,24 +4,29 @@ const color = document.getElementsByClassName('color');
 const range = document.getElementById('jsRange');
 const fillMode = document.getElementById('fillMode');
 const saveMode = document.getElementById('saveMode');
+const trash = document.getElementById('JsTrash');
+const eraser = document.getElementById('JsEraser');
 // const checked = document.querySelector('.checked');
 
 let drawing = false;
 let filling = false;
-
+let erasing = false;
 
 //=== Default drawing style
+const w = 700;
+const h = 700;
 context.strokeStyle = 'rgb(12, 12, 12)';
 context.lineWidth = 2.5;
 context.fillStyle = 'white';
-context.fillRect(0,0,700,700);
+context.fillRect(0,0,w,h);
 // context.fillStyle = 'rgb(12, 12, 12)';
 // canvas.width = 700;
 // canvas.height = 700; html에서 가로 세로 값 주면 js에서 정의할 필요 없음
-
+let x;
+let y;
 function handleMove(event){
-    let x = event.offsetX;
-    let y = event.offsetY;
+    x = event.offsetX;
+    y = event.offsetY;
     if(drawing === false){
         context.beginPath();
         context.moveTo(x,y);
@@ -59,6 +64,13 @@ if(canvas){
     canvas.addEventListener("contextmenu", preventDef);
 }
 
+//===Eraser
+function handleTrash(){
+    context.clearRect(0,0,w,h);
+}
+if(trash){
+    trash.addEventListener("click", handleTrash);
+}
 
 //===Change Color
 function handleColorChange(event){
