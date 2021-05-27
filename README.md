@@ -2,6 +2,9 @@
 I am reviewing what I learned and adding new things to make my own. <br>
 You can see the orginal version at my 'vanilaJs-canvas' repository. <br>
 
+<h3> Here's the website <h3>
+<a target= "_blank"> https://kokiok3.github.io/vanilaJs-canvasUpgrade/ </a>
+ 
 <h3> I'm going to add new features </h3>
  -Eraser tool <br>
  -Change the way of save the image <br>
