@@ -6,16 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PaintCanvas</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Pattaya&family=Roboto+Condensed&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- 캔버스 -->
-    <canvas class="canvas" id="jsCanvas" width="700" height="700"></canvas>
-    
+    <div class="canvasNmenu">
+        <canvas class="canvas" id="jsCanvas" width="700" height="700"></canvas>
+        <div class="erase">
+            <button class="colorNerase"><i id="JsTrash" class="fas fa-trash-alt"></i></button>
+            <button class="colorNerase"><i id="JsEraser" class="fas fa-eraser"></i></button>
+        </div>
+    </div>
+
     <!-- 캔버스 컨트롤 -->
+
     <div class="controls">
         <div>
-            <input id="jsRange" type="range" min="0.1" max="5" value="2.5" step="0.1">
+            <input id="jsRange" class="range" type="range" min="0.1" max="5" value="2.5" step="0.1">
         </div>
         <div class="controls-btns">
             <button id="fillMode">brush</button>
@@ -32,6 +40,8 @@
             <div class="color" style="background-color: #6c5ce7;"></div>
             <div class="color" style="background-color: white;"></div>
             <div class="color" style="background-color: rgb(12, 12, 12);"></div>
+            
+
         </div>
     </div>
     <script src="paint.js"></script>
