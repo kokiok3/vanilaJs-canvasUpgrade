@@ -18,44 +18,44 @@ const h = 700;
 context.strokeStyle = 'rgb(12, 12, 12)';
 context.lineWidth = 2.5;
 context.fillStyle = 'white';
-context.fillRect(0,0,w,h);
+context.fillRect(0, 0, w, h);
 // context.fillStyle = 'rgb(12, 12, 12)';
 // canvas.width = 700;
 // canvas.height = 700; html에서 가로 세로 값 주면 js에서 정의할 필요 없음
 let x;
 let y;
-function handleMove(event){
+function handleMove(event) {
     x = event.offsetX;
     y = event.offsetY;
-    if(drawing === false){
+    if (drawing === false) {
         context.beginPath();
-        context.moveTo(x,y);
+        context.moveTo(x, y);
         // console.log(x,y);
         // console.log(drawing);
-    }else{
-        context.lineTo(x,y);
+    } else {
+        context.lineTo(x, y);
         context.stroke();
         // console.log(drawing);
     }
 }
 
-function startDrawing(){
-    if(filling === false){
+function startDrawing() {
+    if (filling === false) {
         drawing = true;
     }
     // console.log(drawing);
 }
 
-function stopDrawing(){
+function stopDrawing() {
     drawing = false;
     // console.log(drawing);
 }
 
-function preventDef(event){
+function preventDef(event) {
     event.preventDefault();
 }
 
-if(canvas){
+if (canvas) {
     canvas.addEventListener("mousemove", handleMove);
     canvas.addEventListener("mousedown", startDrawing);
     canvas.addEventListener("mouseup", stopDrawing);
@@ -65,72 +65,74 @@ if(canvas){
 }
 
 //===Eraser
-function handleTrash(){
-    context.clearRect(0,0,w,h);
+function handleTrash() {
+    context.clearRect(0, 0, w, h);
 }
-if(trash){
+if (trash) {
     trash.addEventListener("click", handleTrash);
 }
 
 //===Change Color
-function handleColorChange(event){
+function handleColorChange(event) {
     let findColor = event.target.style.backgroundColor;
     context.strokeStyle = findColor;
     context.fillStyle = findColor;
 }
 
-if(color){
-    Array.from(color).forEach(eachColor => 
+if (color) {
+    Array.from(color).forEach(eachColor =>
         eachColor.addEventListener("click", handleColorChange));
 }
 
 
 //===Change Brush Size
-function handleBrushChange(event){
+function handleBrushChange(event) {
     let valueNum = event.target.valueAsNumber;
     context.lineWidth = valueNum;
 }
-if(range){
+if (range) {
     range.addEventListener("input", handleBrushChange)
 }
 
 
 //===Fill Mode
-function handleFillMode(){
-    if(filling === true){
-        context.fillRect(0,0,700,700);
+function handleFillMode() {
+    if (filling === true) {
+        context.fillRect(0, 0, 700, 700);
     }
 }
 
-canvas.addEventListener("click",handleFillMode);
+canvas.addEventListener("click", handleFillMode);
 
 
 
 //===Checked Fill Mode
-function handleModeChange(){
+function handleModeChange() {
     fillMode.classList.toggle("checked");
-    if(fillMode.classList.contains("checked")){
+    if (fillMode.classList.contains("checked")) {
         filling = true;
         fillMode.innerText = "fill";
-    }else{
+    } else {
         filling = false;
         fillMode.innerText = "brush";
     }
-    console.log(filling);
+    // console.log(filling);
 }
 
-if(fillMode){
+if (fillMode) {
     fillMode.addEventListener("click", handleModeChange);
 }
 
 
 //===Save Canvas Image
 //===Checked Save Mode
-function handleSaveImg(){
+function handleSaveImg() {
+    const saveAs = prompt("save as...");
+    if (!saveAs) return;
     const image = canvas.toDataURL();
     const saveImg = document.createElement('a');
     saveImg.href = image;
-    saveImg.download = "그림판";
+    saveImg.download = "saveAs";
     saveImg.click();
 }
 
@@ -138,7 +140,7 @@ function handleSaveImg(){
 //     saveMode.classList.toggle("checked");
 // }
 
-if(saveMode){
+if (saveMode) {
     // saveMode.addEventListener("click", handleSaveClick);
     saveMode.addEventListener("click", handleSaveImg);
 }
