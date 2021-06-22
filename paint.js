@@ -4,6 +4,7 @@ const color = document.getElementsByClassName('color');
 const range = document.getElementById('jsRange');
 const fillMode = document.getElementById('fillMode');
 const saveMode = document.getElementById('saveMode');
+const saveAsMode = document.getElementById('saveAsMode');
 const trash = document.getElementById('JsTrash');
 const eraser = document.getElementById('JsEraser');
 // const checked = document.querySelector('.checked');
@@ -136,6 +137,24 @@ function handleSaveImg() {
     saveImg.click();
 }
 
+//===Save as...
+async function SaveAsImg(event) {
+    const image = await new Promise((res) => canvas.toBlob(res));
+    if (window.showSaveFilePicker) {
+        const handle = await showSaveFilePicker();
+        const writable = await handle.createWritable();
+        await writable.write(image);
+        writable.close();
+    }
+    else {
+        const saveImg = document.createElement("a");
+        saveImg.href = URL.createObjectURL(image);
+        saveImg.download = "image.png";
+        saveImg.click();
+        setTimeout(() => URL.revokeObjectURL(saveImg.href), 60000);
+    }
+}
+
 // function handleSaveClick(){
 //     saveMode.classList.toggle("checked");
 // }
@@ -143,6 +162,7 @@ function handleSaveImg() {
 if (saveMode) {
     // saveMode.addEventListener("click", handleSaveClick);
     saveMode.addEventListener("click", handleSaveImg);
+    saveAsMode.addEventListener("click", SaveAsImg);
 }
 
 
